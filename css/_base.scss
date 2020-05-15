@@ -1,0 +1,47 @@
+$background-color: #ff9000;
+$text-color: #7159c1;
+
+@mixin box-shadow($color) {
+  box-shadow: 4px 4px 6px 3px rgba($color, 0.6);
+}
+
+@mixin container-effect($val) {
+  @if $val == danger {
+    background-color: #e53030;
+  } @else if $val == alert {
+    background-color: yellow;
+  } @else {
+    background-color: grey;
+  }
+}
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: auto;
+  color: #fff;
+  @include box-shadow(green);
+
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text-color;
+    height: 100px;
+    width: 100px;
+    background-color: #e53030;
+    border-radius: 10px;
+    @include box-shadow(#7159c1);
+    @include container-effect(alert);
+  }
+}

@@ -1,0 +1,36 @@
+$colors: (
+  color1: blue,
+  color2: red,
+  color3: yellow,
+);
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@each $key, $color in $colors {
+  .#{$color}-text {
+    color: darken($color, 20);
+  }
+}
+
+@for $i from 1 through 5 {
+  .text-#{$i} {
+    font-size: 15px * $i;
+  }
+}
+
+body {
+  @extend .flex;
+  height: 100%;
+  flex-direction: column;
+
+  p {
+    cursor: pointer; // coloca a mãozinha na seta  do mouse
+    &:hover {
+      color: #ff9000;
+    }
+  }
+}
